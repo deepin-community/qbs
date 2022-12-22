@@ -1,0 +1,111 @@
+Source: qbs
+Section: devel
+Priority: optional
+Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Dmitry Shachnev <mitya57@debian.org>,
+           Lisandro Damián Nicanor Pérez Meyer <lisandro@debian.org>,
+           Adam Majer <adamm@zombino.com>,
+           Simon Quigley <tsimonq2@debian.org>
+Build-Depends: cmake,
+               debhelper-compat (= 13),
+               pkg-kde-tools,
+               python3-bs4,
+               python3-lxml,
+               qtbase5-dev (>= 5.14.0),
+               qtbase5-private-dev,
+               qtdeclarative5-private-dev,
+               qtscript5-dev,
+               qttools5-dev,
+               qttools5-dev-tools
+Build-Depends-Indep: libqt5sql5-sqlite
+Standards-Version: 4.6.1
+Rules-Requires-Root: no
+Homepage: https://wiki.qt.io/Qbs
+Vcs-Git: https://salsa.debian.org/qt-kde-team/qt/qbs.git
+Vcs-Browser: https://salsa.debian.org/qt-kde-team/qt/qbs/
+
+Package: qbs
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: qbs-common (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
+Breaks: qtcreator (<< 3.2.1+dfsg-8~)
+Replaces: qtcreator (<< 3.2.1+dfsg-8~)
+Description: cross-platform build tool
+ Qbs is a general purpose cross-platform build tool that aims at fast and
+ correct incremental builds. It features a project description language that
+ is similar to QML.
+
+Package: qbs-common
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Breaks: qbs (<< 1.4.3+dfsg-2~)
+Replaces: qbs (<< 1.4.3+dfsg-2~)
+Description: Qbs static files
+ Qbs is a general purpose cross-platform build tool that aims at fast and
+ correct incremental builds. It features a project description language that
+ is similar to QML.
+ .
+ This package contains Qbs shared static files.
+
+Package: libqbscore1.22
+Architecture: any
+Multi-Arch: same
+Section: libs
+Pre-Depends: ${misc:Pre-Depends}
+Depends: qbs-common (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
+Description: Qbs core library
+ Qbs is a general purpose cross-platform build tool that aims at fast and
+ correct incremental builds. It features a project description language that
+ is similar to QML.
+ .
+ This package contains Qbs core shared library.
+
+Package: qbs-dev
+Architecture: any
+Multi-Arch: same
+Section: libdevel
+Depends: libqbscore1.22 (= ${binary:Version}), ${misc:Depends}
+Description: Qbs development files
+ Qbs is a general purpose cross-platform build tool that aims at fast and
+ correct incremental builds. It features a project description language that
+ is similar to QML.
+ .
+ This package contains headers and development files for Qbs.
+
+Package: qbs-examples
+Architecture: all
+Multi-Arch: foreign
+Section: doc
+Depends: ${misc:Depends}
+Description: examples for Qbs build tool
+ Qbs is a general purpose cross-platform build tool that aims at fast and
+ correct incremental builds. It features a project description language that
+ is similar to QML.
+ .
+ This package contains the example source projects for Qbs.
+
+Package: qbs-doc
+Architecture: all
+Multi-Arch: foreign
+Section: doc
+Depends: ${misc:Depends}
+Description: Qbs documentation
+ Qbs is a general purpose cross-platform build tool that aims at fast and
+ correct incremental builds. It features a project description language that
+ is similar to QML.
+ .
+ This package contains the documentation for Qbs in QCH format, which can be
+ viewed using Qt Assistant from qttools5-dev-tools package.
+
+Package: qbs-doc-html
+Multi-Arch: foreign
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}
+Description: Qbs HTML documentation
+ Qbs is a general purpose cross-platform build tool that aims at fast and
+ correct incremental builds. It features a project description language that
+ is similar to QML.
+ .
+ This package contains the HTML documentation for Qbs.

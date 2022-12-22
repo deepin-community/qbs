@@ -1,0 +1,836 @@
+qbs (1.22.1-2+u001) UNRELEASED; urgency=medium
+
+  * update
+
+ -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue, 17 May 2022 09:41:52 +0800
+
+qbs (1.22.1-2) unstable; urgency=medium
+
+  * Mark some symbols as optional (closes: #1010755).
+  * Bump Standards-Version to 4.6.1, no changes needed.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sun, 15 May 2022 14:05:37 +0300
+
+qbs (1.22.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop docs_install_path.diff, a different fix was applied upstream.
+    - Update install path for QCH docs.
+  * Add a patch to fix SONAME of libqbscore.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 07 May 2022 11:14:40 +0300
+
+qbs (1.22.0-4) unstable; urgency=medium
+
+  * Disable api and blackbox tests also on mips64el.
+  * Update debian/libqbscore1.22.symbols for mipsel.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Thu, 07 Apr 2022 21:59:47 +0300
+
+qbs (1.22.0-3) unstable; urgency=medium
+
+  * Disable api and blackbox tests on mipsel, blackbox on riscv64.
+  * Update debian/libqbscore1.22.symbols for more architectures.
+  * Upload to unstable.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 06 Apr 2022 19:46:08 +0300
+
+qbs (1.22.0-2) experimental; urgency=medium
+
+  * Update debian/libqbscore1.22.symbols from buildds’ logs.
+  * Update disable_tests_qtscript.diff for CMake port.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 06 Apr 2022 00:19:07 +0300
+
+qbs (1.22.0-1) experimental; urgency=medium
+
+  [ Marius Gripsgard ]
+  * New upstream release (version: 1.21.0)
+  * debian/*: Bump SONAME on libqbscore binary pkg to 1.21
+  * debian/patches: Refresh patches for 1.21
+  * debian/control: Bump standards version to 4.6.0
+  * debian/control: Set requires root to no
+  * debian/patch: Add tests-Make-sure-we-handle-prefix-cases-where-libPath patch
+  * debian/qbs-common: Add new files added in 1.20/1.21
+  * debian/libqbscore: Bump symbols ver to match pkg ver
+  * debian/copyright: Update copyright to match upstream release (1.21.0)
+  * debian/*: Port to use cmake as build system
+  * debian/rules: Workaround bug with parallel creation of docs
+
+  [ Dmitry Shachnev ]
+  * New upstream release (1.22.0).
+  * Drop tests_Make_sure_we_handle_prefix_cases_where_libPath.diff,
+    included in the new release.
+  * Rename libqbscore1.21 to libqbscore1.22 for upstream SONAME change.
+  * Update debian/qbs-common.install and add debian/not-installed.
+  * Update symbols files from the current build logs.
+  * Update debian/copyright.
+  * Remove patches that are not relevant since switch to CMake.
+  * Add a patch to fix documentation install with CMake.
+  * Remove override_dh_install target in favor of debian/not-installed.
+  * Simplify override_dh_auto_clean target.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 02 Apr 2022 21:39:30 +0300
+
+qbs (1.19.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop add_1.19.1_changelog.diff and stop installing the changelog.
+    For the third release in a row, the changelog for the current version
+    is not present in the upstream tarball.
+  * Upload to unstable.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 16 Aug 2021 15:21:16 +0300
+
+qbs (1.19.1-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Drop the patch for missing 1.19.0 changelog.
+  * Upstream forgot to include changelog again, so add a new patch for it.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Tue, 22 Jun 2021 20:16:50 +0300
+
+qbs (1.19.0-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Update debian/copyright.
+  * Backport upstream patch to add missing changelog for 1.19.0 release.
+  * Add new files to debian/qbs-common.install.
+  * Rename libqbscore1.18 to libqbscore1.19 for upstream SONAME change.
+  * Update debian/libqbscore1.19.symbols from the current build log.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 15 May 2021 21:24:21 +0300
+
+qbs (1.18.0-5) unstable; urgency=medium
+
+  * Handle symlink to directory change in qbs-examples (closes: #985295).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 15 Mar 2021 21:02:24 +0300
+
+qbs (1.18.0-4) unstable; urgency=medium
+
+  * Skip TestBlackboxJobLimits::jobLimits test that sometimes hangs on
+    mipsel/mips64el (closes: #980872).
+  * Run the remaining tests with QBS_AUTOTEST_ALWAYS_LOG_STD{OUT,ERR}=1.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sun, 24 Jan 2021 14:18:12 +0300
+
+qbs (1.18.0-3) unstable; urgency=medium
+
+  * Run tests with --max-parallel=1 to make them more stable.
+  * Bump required Qt version to 5.14.0, following upstream.
+  * Upload to unstable.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Thu, 21 Jan 2021 21:01:14 +0300
+
+qbs (1.18.0-2) experimental; urgency=medium
+
+  * Add one more file to debian/patches/no_nosys_specs.diff.
+  * Update debian/libqbscore1.18.symbols from buildds’ logs.
+  * Update debian/watch to version 4.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Tue, 05 Jan 2021 21:20:29 +0300
+
+qbs (1.18.0-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Refresh patches for the new release.
+  * Update debian/libqbscore1.17.symbols from buildds’ logs.
+  * Rename libqbscore1.17 to libqbscore1.18 for upstream SONAME change.
+  * Pass --buildsystem=qmake to dh, to prevent it from choosing cmake.
+  * Add one new file to debian/qbs-common.install.
+  * Update debian/libqbscore1.18.symbols from the current build logs.
+  * Update debian/copyright.
+  * Bump Standards-Version to 4.5.1, no changes needed.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 28 Dec 2020 21:27:26 +0300
+
+qbs (1.17.0-2) unstable; urgency=medium
+
+  * Fix tests failures on ARM:
+    - Do not use nosys.specs, it needs gcc-arm-none-eabi.
+    - Disable build of arm-gcc.s, it causes errors from as.
+  * Update debian/libqbscore1.17.symbols from buildds’ logs.
+  * Upload to unstable.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sun, 20 Sep 2020 15:43:21 +0300
+
+qbs (1.17.0-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Refresh patches for the new release.
+  * Update debian/libqbscore1.16.symbols from buildds’ logs.
+  * Rename libqbscore1.16 to libqbscore1.17 for upstream SONAME change.
+  * Install three new files for the capnproto module.
+  * Update to debhelper compat level 13.
+    - Drop dh_missing override, --fail-missing is now default behavior.
+    - Use ${DEB_HOST_MULTIARCH} substitution.
+    - Adapt to debhelper exporting its own $HOME for tests.
+  * Update debian/libqbscore1.17.symbols from the current build logs.
+  * Stop overriding libexec location (FHS v3.0 and Debian Policy v4.1.5
+    allow for /usr/libexec).
+  * Update debian/copyright.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 07 Sep 2020 13:35:34 +0300
+
+qbs (1.16.0-2) unstable; urgency=medium
+
+  * Update debian/libqbscore1.16.symbols from buildds’ logs.
+  * Upload to unstable.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Thu, 25 Jun 2020 11:00:39 +0300
+
+qbs (1.16.0-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Refresh skip_test_concurrent.diff.
+  * Update debian/libqbscore1.14.symbols from buildds’ logs.
+  * Rename libqbscore1.14 to libqbscore1.16 for upstream SONAME change.
+  * Install new files.
+  * Update debian/libqbscore1.16.symbols from the current build log.
+  * Update debian/copyright.
+  * Make tests not fail when there are multiple GCC versions installed.
+  * Test sanitizers only on amd64, they are not available everywhere.
+  * Bump Standards-Version to 4.5.0, no changes needed.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Thu, 21 May 2020 21:00:57 +0300
+
+qbs (1.14.1-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Drop qml_type_descriptions.diff, applied upstream.
+  * Refresh kfreebsd_soname.diff.
+  * Update debian/libqbscore1.13.symbols from buildds’ logs.
+  * Rename libqbscore1.13 to libqbscore1.14 for upstream SONAME change.
+  * Bump required Qt version to 5.11.0, following upstream.
+  * Install new files.
+  * Update debian/libqbscore1.14.symbols from the current build logs.
+  * Update debian/copyright.
+  * Bump debhelper compat level to 12, use the new syntax.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 13 Nov 2019 14:56:40 +0300
+
+qbs (1.13.1-2) unstable; urgency=medium
+
+  * Update debian/libqbscore1.13.symbols from the current build log.
+  * Add Build-Depends-Package field to debian/libqbscore1.13.symbols.
+  * Bump Standards-Version to 4.4.1, no changes needed.
+  * Upload to unstable.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Tue, 22 Oct 2019 15:13:07 +0300
+
+qbs (1.13.1-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Refresh debian/patches/skip_test_concurrent.diff.
+  * Update debian/libqbscore1.13.symbols from buildds’ logs.
+  * Update debian/libqbscore1.13.symbols from the current build log.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 12 Jun 2019 23:14:25 +0300
+
+qbs (1.13.0-1) experimental; urgency=medium
+
+  [ Simon Quigley ]
+  * Change my email to tsimonq2@debian.org now that I am a Debian Developer.
+  * Bump Standards-version to 4.3.0, no changes needed.
+
+  [ Dmitry Shachnev ]
+  * New upstream release.
+  * Stop repacking the tarball, there is no more minified jquery.js.
+  * Drop debug_log_level_segfault_fix.diff, included in the new release.
+  * Refresh and rebase other patches.
+  * Remove the libqtprofilesetup package, it is gone upstream.
+  * Update debian/qbs-common.install and debian/qbs-dev.install.
+  * Rename libqbscore1.12 to libqbscore1.13 for upstream SONAME change.
+  * Update debian/libqbscore1.13.symbols from buildds’ logs.
+  * Update debian/libqbscore1.13.symbols from the current build log.
+  * Update debian/copyright.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 29 Apr 2019 22:43:49 +0300
+
+qbs (1.12.2+dfsg-2) unstable; urgency=medium
+
+  * Add a patch to fix segfault with --log-level debug (closes: #917066).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sun, 23 Dec 2018 00:32:11 +0300
+
+qbs (1.12.2+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh debian/patches/skip_test_concurrent.diff.
+  * Update symbols files (closes: #916155).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 10 Dec 2018 22:15:09 +0300
+
+qbs (1.12.1+dfsg-2) unstable; urgency=medium
+
+  * Update symbols files from buildds’ logs.
+  * Upload to unstable.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 31 Oct 2018 14:43:46 +0300
+
+qbs (1.12.1+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+    - Tests now pass on i386 (closes: #908477).
+  * Drop install_missing.patch, applied in the new release.
+  * Refresh skip_test_concurrent.diff.
+  * Remove dbgsym migration, it is no longer needed.
+  * Use xz compression for the repacked tarball.
+  * Update symbols files from buildds’ and the current build logs.
+  * Bump Standards-Version to 4.2.1, no changes needed.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 26 Sep 2018 12:59:09 +0300
+
+qbs (1.12.0+dfsg-1) experimental; urgency=medium
+
+  [ Alexander Volkov ]
+  * New upstream release.
+  * Install missing header file.
+  * Update install files for the new release.
+  * Rename the library packages according to upstream SONAME change.
+  * Update symbols from build logs.
+
+  [ Dmitry Shachnev ]
+  * Update debian/copyright.
+  * Bump qtbase5-dev build-dependency to 5.9.0.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Tue, 14 Aug 2018 14:10:34 +0300
+
+qbs (1.11.1+dfsg-2) unstable; urgency=medium
+
+  * Fix architecture independent builds.
+  * Update libqbsqtprofilesetup1.11.symbols from buildds’ logs.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 14 May 2018 23:18:21 +0300
+
+qbs (1.11.1+dfsg-1) unstable; urgency=medium
+
+  [ Simon Quigley ]
+  * New upstream release.
+  * Bump Standards-version to 4.1.4, no changes needed.
+  * Update patches for new upstream release and remove reverse-
+    applicable installed_headers.diff.
+
+  [ Dmitry Shachnev ]
+  * Update symbols files from buildds’ logs.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Sat, 12 May 2018 20:00:45 -0500
+
+qbs (1.11.0+dfsg-1) unstable; urgency=medium
+
+  [ Alexander Volkov ]
+  * New upstream release.
+  * Drop fix_ftbfs_gcc6.diff, applied upstream.
+  * Update QBS_LIBEXEC_DESTDIR for static.pro and fix DESTDIR for
+    qbs_processlauncher (processlauncher_destdir.diff).
+  * Set LD_LIBRARY_PATH for qbsres target so it could use built qbs
+    to generate QML type descriptions (qml_type_descriptions.diff).
+  * Fix the list of installed headers for qmake build (installed_headers.diff).
+  * Update install files for the new release.
+  * Rename the library packages according to upstream SONAME change.
+  * Update symbols from build logs.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Fri, 06 Apr 2018 17:36:51 +0300
+
+qbs (1.10.1+dfsg-1) unstable; urgency=medium
+
+  [ Dmitry Shachnev ]
+  * Properly support DEB_BUILD_OPTIONS=nocheck (closes: #886656). Thanks to
+    Helmut Grohne.
+
+  [ Simon Quigley ]
+  * New upstream release.
+  * Bump Standards-version to 4.1.3, no changes needed.
+  * Bump debhelper compat to 11:
+    - Remove --parallel from debian/rules because it is already used by default.
+    - No other changes were required.
+  * Update Vcs-* to reflect the move to Salsa.
+  * Follow the hints given by the multiarch hinter.
+  * Update qbs-common.install for the new upstream release.
+  * Update symbols from build logs.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Thu, 15 Mar 2018 18:05:03 -0500
+
+qbs (1.10.0+dfsg-2) unstable; urgency=medium
+
+  * Update symbols files from buildds’ logs.
+  * Upload to unstable.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Fri, 22 Dec 2017 22:12:20 +0300
+
+qbs (1.10.0+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Drop install_missing_header.diff, it was coming from upstream.
+  * Refresh and rebase other patches.
+  * Install upstream changelog.
+  * Update install files for the new release.
+  * Rename the library packages according to upstream SONAME change.
+  * Export QBS_AUTOTEST_PROFILE=qbs_autotests when running the tests.
+  * Build-depend on qtdeclarative5-private-dev, for Qt.quick module.
+  * Update symbols files for the new release.
+  * Use dh_missing instead of deprecated dh_install --fail-missing.
+  * Use dh_auto_configure provided by debhelper.
+  * Update debian/copyright.
+  * Do not install dmgbuild Python code, it is only working on macOS.
+  * Fix Abstract field in qbs-doc-html.doc-base.
+  * Bump Standards-Version to 4.1.2, no changes needed.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Tue, 19 Dec 2017 21:26:01 +0300
+
+qbs (1.8.1+dfsg-4) unstable; urgency=medium
+
+  * Make libqbscore1.8 depend on qbs-common (closes: #875434).
+  * Update debian/libqbscore1.8.symbols from buildds’ logs.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Tue, 12 Sep 2017 15:46:40 +0300
+
+qbs (1.8.1+dfsg-3) unstable; urgency=medium
+
+  * Make sure qbs tries to find qbs_processlauncher in correct place, by
+    specifying QBS_RELATIVE_LIBEXEC_PATH (closes: #869909).
+  * Update symbols files for GCC 7.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 07 Aug 2017 17:18:32 +0300
+
+qbs (1.8.1+dfsg-2) unstable; urgency=medium
+
+  * Install missing tools/version.h header to fix QtCreator build.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 10 Jul 2017 13:27:31 +0300
+
+qbs (1.8.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Add myself to Uploaders.
+  * Update Standards-version to 4.0.0, no changes needed.
+  * Bump debhelper compat to 10.
+  * Fix doc-base-file-references-missing-file by correcting path in qbs-
+    doc-html.doc-base.
+  * Upload to unstable.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Wed, 05 Jul 2017 04:08:07 -0500
+
+qbs (1.8.0+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Drop qmake_documentation.diff, applied upstream.
+  * Refresh kfreebsd_soname.diff and skip_test_concurrent.diff.
+  * Bump qtbase5-dev build-dependency to 5.6.0, following upstream.
+  * Improve package descriptions, thanks Joerg Bornemann (closes: #863874).
+  * Update debian/copyright.
+  * Update docs installation code for the new release.
+  * Update install files for the new release.
+  * Rename the library packages according to upstream SONAME change:
+    - libqbscore1.7 → libqbscore1.8;
+    - libqbsqtprofilesetup1.7 → libqbsqtprofilesetup1.8.
+  * Update the symbols files from the current build log.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Tue, 06 Jun 2017 13:58:02 +0300
+
+qbs (1.7.2+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Drop skip_test_concurrent.diff, applied upstream.
+  * Update debian/copyright.
+  * Update debian/libqbscore1.7.symbols from the current build log.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 24 May 2017 12:39:34 +0300
+
+qbs (1.7.0+dfsg-4) unstable; urgency=medium
+
+  * Backport upstream patch to make documentation install dir configurable
+    (qmake_documentation.diff).
+  * Install the documentation into correct location (closes: #795829).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 25 Jan 2017 12:01:02 +0300
+
+qbs (1.7.0+dfsg-3) unstable; urgency=medium
+
+  * Fix the arch:all build by passing -f to rm command.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 04 Jan 2017 22:06:30 +0300
+
+qbs (1.7.0+dfsg-2) unstable; urgency=medium
+
+  * Drop ${shlibs:Depends} from qbs-dev, it does not have any binary code.
+  * Update debian/copyright.
+  * Fix race condition which breaks parallel builds (fix_race_condition.diff).
+  * Do not install the libqbscore.so.1 symlink (closes: #850035).
+  * Use the same SONAME scheme on kfreebsd as on Linux (kfreebsd_soname.diff).
+  * Upload to unstable.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 04 Jan 2017 21:24:09 +0300
+
+qbs (1.7.0+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Refresh and rebase the patches for the new release.
+  * Add three new files to debian/qbs-common.install.
+  * Update symbols files from the current amd64 build log.
+  * Rename the library packages according to upstream SONAME change:
+    - libqbscore1 → libqbscore1.7;
+    - libqbsqtprofilesetup1 → libqbsqtprofilesetup1.7.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Fri, 23 Dec 2016 11:22:04 +0300
+
+qbs (1.6.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh skip_test_concurrent.diff.
+  * Update debian/libqbscore1.symbols from buildds’ logs.
+  * Fix description-synopsis-starts-with-article Lintian warning.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sun, 13 Nov 2016 19:25:30 +0300
+
+qbs (1.6.0+dfsg-2) unstable; urgency=medium
+
+  * Update debian/libqbscore1.symbols from buildds’ logs.
+  * Upload to unstable.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 07 Sep 2016 12:04:38 +0300
+
+qbs (1.6.0+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Set $HOME to a temporary location when running tests.
+  * Drop skip_test_homedirectory.diff, no longer needed.
+  * Refresh other patches.
+  * Update install files for the new release.
+  * Update debian/libqbscore1.symbols from amd64 and i386 build logs.
+  * Fix two Lintian errors about package descriptions.
+  * Bump required Qt version to 5.4.0, following upstream.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 03 Sep 2016 14:43:46 +0300
+
+qbs (1.5.2+dfsg-1) unstable; urgency=medium
+
+  [ Adam Majer ]
+  * Remove /usr/include from INCLUDEPATH list of installed
+    .pri file. Adding this default included path causes FTBFS
+    for software using qbs with GCC 6 (fix_ftbfs_gcc6.diff)
+    (closes: #831182)
+
+  [ Dmitry Shachnev ]
+  * New upstream release.
+  * Drop kfreebsd.diff, a similar patch was applied upstream.
+  * Avoid using the Qt Build Suite term, following upstream.
+
+ -- Adam Majer <adamm@zombino.com>  Tue, 02 Aug 2016 00:04:16 +0200
+
+qbs (1.5.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh skip_test_concurrent.diff.
+  * Drop the rules to remove empty directories in documentation, qdoc no
+    longer creates them (since Qt 5.6.1).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 18 Jun 2016 12:11:44 +0300
+
+qbs (1.5.0+dfsg-2) unstable; urgency=medium
+
+  * Build-depend on qttools5-dev-tools to prevent a test failure.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Fri, 13 May 2016 09:33:19 +0300
+
+qbs (1.5.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Set LC_ALL=C.UTF-8 when running tests, as according to upstream the
+    testsuite assumes English locale.
+  * Refresh patches against the new release.
+  * Update debian/qbs-common.install.
+  * Update debian/libqbscore1.symbols from amd64 build log.
+  * Bump Standards-Version to 3.9.8, no changes needed.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Thu, 12 May 2016 22:05:38 +0300
+
+qbs (1.4.5+dfsg-2) unstable; urgency=medium
+
+  * Skip new TestBlackbox::concurrentExecutor() test which hangs on all
+    non-x86 architectures.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Thu, 31 Mar 2016 19:29:35 +0200
+
+qbs (1.4.5+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Use recommended https URIs for Vcs fields.
+  * Bump Standards-Version to 3.9.7, no changes needed.
+  * Migrate to automatic dbgsym packages.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Thu, 17 Mar 2016 18:50:14 +0100
+
+qbs (1.4.4+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 19 Dec 2015 13:46:01 +0300
+
+qbs (1.4.3+dfsg-3) unstable; urgency=medium
+
+  * Update debian/libqbscore1.symbols from buildds’ logs.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 04 Nov 2015 09:41:32 +0300
+
+qbs (1.4.3+dfsg-2) unstable; urgency=medium
+
+  * Do not try to run tests during arch-indep builds.
+  * Split files in /usr/share into new qbs-common package.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Thu, 29 Oct 2015 11:22:24 +0300
+
+qbs (1.4.3+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop dont_throw_exceptions.diff, applied upstream.
+  * Refresh skip_test_homedirectory.diff.
+  * Update debian/libqbscore1.symbols.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 28 Oct 2015 16:27:50 +0300
+
+qbs (1.4.2+dfsg-3) unstable; urgency=medium
+
+  * Use QBS_LIBRARY_DIRNAME to specify library dir (closes: #797774).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 05 Sep 2015 10:24:02 +0300
+
+qbs (1.4.2+dfsg-2) unstable; urgency=medium
+
+  * Backport upstream change that should hopefully fix tests failures
+    on most architectures (dont_throw_exceptions.diff).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 26 Aug 2015 16:57:58 +0300
+
+qbs (1.4.2+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop patches:
+    - fix_assembly_test.diff (applied upstream)
+    - revert_tests_speedup.diff (applied upstream)
+    - skip_test.diff (no longer needed)
+  * Refresh and rebase other patches.
+  * Update qbs.install to install some new files.
+  * Remove gitignore files in clean target.
+  * Minor debian/copyright updates.
+  * Update libqbscore1.symbols (only internal symbols changed).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 24 Aug 2015 18:49:24 +0300
+
+qbs (1.4.1+dfsg-8) unstable; urgency=medium
+
+  * Tell qmake where to install libraries and plugins, rather than moving
+    them after installing (LP: #1456593).
+  * Remove lib/ directory in clean target.
+  * Update symbols files for GCC 5, fixing a build failure.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 12 Aug 2015 20:55:48 +0300
+
+qbs (1.4.1+dfsg-7) unstable; urgency=medium
+
+  * Skip homeDirectory test because buildds do not have home directory
+    (skip_test_homedirectory.diff).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 18 Jul 2015 21:18:43 +0300
+
+qbs (1.4.1+dfsg-6) unstable; urgency=medium
+
+  * Simplify testing commands: no need to pass --settings-dir because
+    we export XDG_CONFIG_HOME anyway.
+  * Define qbs_enable_unit_tests to enable some additional tests.
+    - Add some new symbols that appeared after enabling it.
+  * Move tests whitelist logic to auto.pro, so that non-API tests are
+    still run on non-whitelisted architectures.
+  * Talk to FreeBSD kernel manually instead of using kinfo_getproc,
+    which is not available on GNU/kFreeBSD.
+  * Upload to unstable.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 18 Jul 2015 19:38:23 +0300
+
+qbs (1.4.1+dfsg-5) experimental; urgency=medium
+
+  * Fixup the previous kFreeBSD fix; add B-D on libutil-freebsd-dev.
+  * Use a whitelist of architectures where we run tests, until QBS
+    gets ported away from QtScript.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 13 Jul 2015 13:20:21 +0300
+
+qbs (1.4.1+dfsg-4) experimental; urgency=medium
+
+  * Add missing includes for kinfo_getproc(3) on kFreeBSD
+    (bsd_includes.diff).
+  * Disable one more test (infinite-loop-js) failing because of QtScript
+    bugs to make the build pass on powerpc. Rename the patch from
+    disable_moc_hpp_included.diff to disable_tests_qtscript.diff.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sun, 12 Jul 2015 17:08:33 +0300
+
+qbs (1.4.1+dfsg-3) experimental; urgency=medium
+
+  * Backport upstream change to run testAssembly only on architectures
+    where it is supported (fix_assembly_test.diff).
+  * Replace revert_tests_speedup.diff with proposed upstream version
+    by Christian Kandeler.
+  * Disable moc-hpp-included test which currently fails because of a bug
+    in QtScript on some architectures (disable_moc_hpp_included.diff).
+  * Update some URLs to use *.qt.io instead of *.qt-project.org.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 11 Jul 2015 19:57:05 +0300
+
+qbs (1.4.1+dfsg-2) experimental; urgency=medium
+
+  * Version all symbols from 1.4 snapshots as 1.4.0.
+  * Revert upstream commit that may have caused tests to fail.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 08 Jul 2015 14:00:20 +0300
+
+qbs (1.4.1+dfsg-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Update debian/watch for new tarball naming scheme.
+  * Refresh debian/patches/skip_test.diff.
+  * Install new tools/commandechomode.h header in qbs-dev.
+  * Update debian/libqbscore1.symbols for the new version.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 06 Jul 2015 17:33:05 +0300
+
+qbs (1.4~git20150407-c224c8-1) experimental; urgency=medium
+
+  * New upstream snapshot.
+  * Fix a typo in previous changelog entry.
+  * Sort debian/qbs.install.
+  * Clean up patches and bump Last-Update timestamps.
+  * Update name of qbs_disable_rpath variable, following upstream
+    change (commit a8e6324de460745a).
+  * Update libqbscore1.symbols for the new snapshot.
+  * Properly version symbols introduced in previous upload.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Fri, 10 Apr 2015 09:33:46 +0300
+
+qbs (1.4~7fd456-1) experimental; urgency=medium
+
+  [ Dmitry Shachnev ]
+  * Sort debian/qbs.install.
+  * Update debian/libqbscore1.symbols from buildds’ logs.
+
+  [ Adam Majer ]
+  * Release snapshot of 1.4.x branch as of 7fd456 commit
+    + endianness patch applied upstream, removed from patches
+  * Add myself to uploaders
+
+ -- Adam Majer <adamm@zombino.com>  Thu, 12 Mar 2015 18:55:22 -0500
+
+qbs (1.3.4+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop increase_timeout.diff, applied upstream.
+  * Replace endianness.diff with upstream patch.
+  * Update copyright information.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sun, 08 Mar 2015 20:54:30 +0300
+
+qbs (1.3.3+dfsg-4) unstable; urgency=medium
+
+  * Drop no longer needed chmod calls from debian/rules, thanks Jake
+    Petroules for the suggestion.
+  * Use qbs-config instead of modifying configuration files manually,
+    thanks Jake Petroules for the suggestion.
+  * Mark some destructors symbols as optional to fix build with GCC 5
+    (closes: #778082).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 18 Feb 2015 10:11:29 +0300
+
+qbs (1.3.3+dfsg-3) unstable; urgency=medium
+
+  [ Pino Toscano ]
+  * Add ${misc:Pre-Depends} to Pre-Depends for qbs, libqbscore1, and
+    libqbsqtprofilesetup1.
+
+  [ Adam Majer ]
+  * Remove rpath from project include files used by 3rd party
+    software. On Debian, rpath should not be set when referencing
+    system installed libraries.
+
+  [ Dmitry Shachnev ]
+  * Add increase_timeout.diff from Dejan Latinovic to make tests pass
+    on mips (closes: #774974).
+  * Update debian/watch for new downloads server name.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Fri, 09 Jan 2015 19:46:15 +0300
+
+qbs (1.3.3+dfsg-2) unstable; urgency=medium
+
+  * Re-add skip_test.diff, seems to be still needed.
+  * Update debian/copyright.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sun, 28 Dec 2014 20:31:27 +0300
+
+qbs (1.3.3+dfsg-1) unstable; urgency=medium
+
+  * New upstream bugfix release.
+  * Drop no_gnu_hash.diff, applied upstream.
+  * Drop skip_test.diff, no longer needed.
+  * Add support for all MIPS flavors (closes: #767459).
+  * Bump Breaks/Replaces on qtcreator, it is not fixed in Jessie.
+  * Update debian/libqbscore1.symbols.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 15 Dec 2014 17:44:26 +0300
+
+qbs (1.3.2+dfsg-1) unstable; urgency=medium
+
+  * New upstream bugfix release.
+  * Add alpha, hppa and sparc64 support (closes: #764556).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 20 Oct 2014 16:53:29 +0400
+
+qbs (1.3.1+dfsg-4) unstable; urgency=medium
+
+  * Add upstream patch to not hardcode the linker hash style.
+  * Add arm64 support.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 15 Oct 2014 21:29:30 +0400
+
+qbs (1.3.1+dfsg-3) unstable; urgency=medium
+
+  * Replace previous cleanup patch with a new patch that
+    disables the broken test.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 08 Oct 2014 19:29:24 +0400
+
+qbs (1.3.1+dfsg-2) unstable; urgency=medium
+
+  * Enable disable_rpath and qbs_enable_project_file_updates
+    configuration flags, thanks Adam Majer for the patch.
+  * Add 4 new symbols introduced by the previous change.
+  * Add a patch to correctly detect endianness of all supported
+    by Debian architectures.
+  * Add a patch to clean up before running dependenciesProperty
+    test (should make it passing).
+  * Add lib/ to LD_LIBRARY_PATH when running tests (should fix
+    build failures on kfreebsd and hurd).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Tue, 07 Oct 2014 10:41:59 +0400
+
+qbs (1.3.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+    + Update .install files.
+    + Update libqbscore1.symbols. There are missing symbols, but
+      we ignore that as the package has never been in testing.
+  * Break/Replace qtcreator (<< 3.2.1+dfsg-4~) (closes: #763365).
+  * Fix build failure when multiple compilers are installed.
+  * Properly clean up after tests.
+  * Update my e-mail address.
+  * debian/watch: Use new repacksuffix option.
+  * Update Vcs-Browser field to point to cgit interface.
+  * debian/copyright: Use correct exception syntax.
+  * Bump Standards-Version to 3.9.6, no changes needed.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 04 Oct 2014 10:21:08 +0400
+
+qbs (1.2.2+dfsg-1) unstable; urgency=medium
+
+  * Initial release (closes: #745095).
+
+ -- Dmitry Shachnev <mitya57@gmail.com>  Sat, 26 Jul 2014 23:28:44 +0400

@@ -1,0 +1,18 @@
+Description: disable build of arm-gcc.s, it causes errors from as
+ arm-gcc.s:4: Error: operand 1 must be an integer register -- `mov r0,#0'
+ arm-gcc.s:5: Error: unknown mnemonic `bx' -- `bx lr'
+Author: Dmitry Shachnev <mitya57@debian.org>
+Forwarded: not-needed
+Last-Update: 2020-09-20
+
+--- a/tests/auto/blackbox/testdata-baremetal/one-object-asm-application/one-object-asm-application.qbs
++++ b/tests/auto/blackbox/testdata-baremetal/one-object-asm-application/one-object-asm-application.qbs
+@@ -71,8 +71,6 @@ BareMetalApplication {
+             if (qbs.architecture === "hcs8")
+                 return true;
+         } else if (qbs.toolchainType === "gcc") {
+-            if (qbs.architecture.startsWith("arm"))
+-                return true;
+             if (qbs.architecture === "avr")
+                 return true;
+             if (qbs.architecture === "avr32")

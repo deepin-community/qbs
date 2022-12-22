@@ -1,0 +1,16 @@
+usr/bin/qbs
+usr/bin/qbs-config
+usr/bin/qbs-config-ui
+usr/bin/qbs-create-project
+usr/bin/qbs-setup-android
+usr/bin/qbs-setup-qt
+usr/bin/qbs-setup-toolchains
+usr/lib/${DEB_HOST_MULTIARCH}/qbs/plugins/libclangcompilationdbgenerator.so
+usr/lib/${DEB_HOST_MULTIARCH}/qbs/plugins/libiarewgenerator.so
+usr/lib/${DEB_HOST_MULTIARCH}/qbs/plugins/libkeiluvgenerator.so
+usr/lib/${DEB_HOST_MULTIARCH}/qbs/plugins/libmakefilegenerator.so
+usr/lib/${DEB_HOST_MULTIARCH}/qbs/plugins/libqbs_cpp_scanner.so
+usr/lib/${DEB_HOST_MULTIARCH}/qbs/plugins/libqbs_qt_scanner.so
+usr/lib/${DEB_HOST_MULTIARCH}/qbs/plugins/libvisualstudiogenerator.so
+usr/libexec/qbs/qbs_processlauncher
+usr/share/man/man1/qbs.1

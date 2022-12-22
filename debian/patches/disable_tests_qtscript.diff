@@ -1,0 +1,35 @@
+Description: disable API tests on mips*, powerpc, ppc64 and ppc64el
+ They are segfaulting due to bugs in QtScript.
+ The stacktrace is (obtained on ppc64el):
+   #0  SLL_PopRange (end=<synthetic pointer>, start=<synthetic pointer>, N=<optimized out>, head=0x3fffb32004e0) at ../3rdparty/javascriptcore/JavaScriptCore/wtf/FastMalloc.cpp:742
+   #1  PopRange (end=<synthetic pointer>, start=<synthetic pointer>, N=<optimized out>, this=0x3fffb32004e0) at ../3rdparty/javascriptcore/JavaScriptCore/wtf/FastMalloc.cpp:2083
+   #2  ReleaseToCentralCache (N=192, cl=<optimized out>, this=0x3fffb3200478) at ../3rdparty/javascriptcore/JavaScriptCore/wtf/FastMalloc.cpp:2795
+   #3  QTWTF::TCMalloc_ThreadCache::Cleanup (this=0x3fffb3200478) at ../3rdparty/javascriptcore/JavaScriptCore/wtf/FastMalloc.cpp:2745
+   #4  0x00003fffb724c6d8 in QTWTF::TCMalloc_ThreadCache::DeleteCache (heap=0x3fffb3200478) at ../3rdparty/javascriptcore/JavaScriptCore/wtf/FastMalloc.cpp:3069
+   #5  0x00003fffb6a48604 in __nptl_deallocate_tsd () at pthread_create.c:157
+   #6  0x00003fffb6a489b8 in start_thread (arg=0x3fffb441f160) at pthread_create.c:322
+   #7  0x00003fffb745f870 in clone () at ../sysdeps/unix/sysv/linux/powerpc/powerpc64/clone.S:104
+ .
+ Also disable blackbox tests on mips* and riscv64.
+Author: Dmitry Shachnev <mitya57@debian.org>
+Forwarded: not-needed
+Last-Update: 2022-04-06
+
+--- a/tests/auto/CMakeLists.txt
++++ b/tests/auto/CMakeLists.txt
+@@ -1,6 +1,13 @@
+-add_subdirectory(api)
++set(API_DISABLED_ARCHITECTURES mips mips64 ppc ppc64 ppc64le)
++set(BLACKBOX_DISABLED_ARCHITECTURES mips mips64 riscv64)
++
++if(NOT CMAKE_HOST_SYSTEM_PROCESSOR IN_LIST API_DISABLED_ARCHITECTURES)
++    add_subdirectory(api)
++endif()
+ add_subdirectory(cmdlineparser)
+-add_subdirectory(blackbox)
++if(NOT CMAKE_HOST_SYSTEM_PROCESSOR IN_LIST BLACKBOX_DISABLED_ARCHITECTURES)
++    add_subdirectory(blackbox)
++endif()
+ 
+ if(WITH_UNIT_TESTS)
+     add_subdirectory(buildgraph)

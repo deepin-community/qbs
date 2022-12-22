@@ -1,0 +1,25 @@
+Description: skip tests that hang on some non-x86 architectures
+Author: Dmitry Shachnev <mitya57@debian.org>
+Forwarded: no
+Last-Update: 2021-01-23
+
+--- a/tests/auto/blackbox/tst_blackbox.cpp
++++ b/tests/auto/blackbox/tst_blackbox.cpp
+@@ -1730,6 +1730,7 @@ void TestBlackbox::clean()
+ 
+ void TestBlackbox::concurrentExecutor()
+ {
++    QSKIP("hangs on some architectures");
+     QDir::setCurrent(testDataDir + "/concurrent-executor");
+     QCOMPARE(runQbs(QStringList() << "-j" << "2"), 0);
+     QVERIFY2(!m_qbsStderr.contains("ASSERT"), m_qbsStderr.constData());
+--- a/tests/auto/blackbox/tst_blackboxjoblimits.cpp
++++ b/tests/auto/blackbox/tst_blackboxjoblimits.cpp
+@@ -143,6 +143,7 @@ void TestBlackboxJobLimits::jobLimits_da
+ 
+ void TestBlackboxJobLimits::jobLimits()
+ {
++    QSKIP("hangs on some architectures");
+     QDir::setCurrent(testDataDir + "/job-limits");
+     QFETCH(int, projectJobCount);
+     QFETCH(int, productJobCount);

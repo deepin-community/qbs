@@ -1,0 +1,16 @@
+Description: fix syntax of regex
+Author: Dmitry Shachnev <mitya57@debian.org>
+Forwarded: https://codereview.qt-project.org/c/qbs/qbs/+/410156
+Last-Update: 2022-05-07
+
+--- a/cmake/QbsBuildConfig.cmake
++++ b/cmake/QbsBuildConfig.cmake
+@@ -142,7 +142,7 @@ function(add_qbs_library target_name)
+         set(library_type STATIC)
+     endif()
+ 
+-    string(REGEX REPLACE "\\.[0..9]+$" "" _SOVERSION ${QBS_VERSION})
++    string(REGEX REPLACE "\\.[0-9]+$" "" _SOVERSION ${QBS_VERSION})
+ 
+     add_library(${target_name} ${library_type} ${_arg_SOURCES})
+     target_compile_definitions(

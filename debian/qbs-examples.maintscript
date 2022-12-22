@@ -1,0 +1,1 @@
+symlink_to_dir /usr/share/qbs/examples/cocoa-application/CocoaApplication/en_US.lproj en.lproj 1.18.0-5~ qbs-examples

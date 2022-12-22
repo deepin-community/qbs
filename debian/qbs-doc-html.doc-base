@@ -1,0 +1,12 @@
+Document: qbs-doc-html
+Title: Qbs Documentation
+Author: The Qt Company Ltd.
+Abstract:
+ Qbs is a tool that helps simplify the build process for developing projects
+ across multiple platforms. Qbs can be used for any software project, regardless
+ of programming language, toolkit, or libraries used.
+Section: Programming
+
+Format: HTML
+Index: /usr/share/doc/qbs/html/index.html
+Files: /usr/share/doc/qbs/html/*

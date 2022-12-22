@@ -1,0 +1,32 @@
+From 077ce0bce4265b69278c10f8956ae8fad145b0db Mon Sep 17 00:00:00 2001
+From: Marius Gripsgard <marius@ubports.com>
+Date: Thu, 30 Dec 2021 03:01:58 +0100
+Subject: [PATCH] doc: Install man pages with cmake
+
+Change-Id: Ibce74cf1b524c8c08b38dfc76549b4723ea705b3
+---
+ doc/CMakeLists.txt     | 2 ++
+ doc/man/CMakeLists.txt | 1 +
+ 2 files changed, 3 insertions(+)
+ create mode 100644 doc/man/CMakeLists.txt
+
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index 5b8ac7636..04ff12470 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -26,3 +26,5 @@ add_qbs_documentation(
+         ${_DOC_IMAGES_SOURCES}
+         ${_DOC_TARGETS_SOURCES}
+     )
++
++add_subdirectory(man)
+diff --git a/doc/man/CMakeLists.txt b/doc/man/CMakeLists.txt
+new file mode 100644
+index 000000000..7e8247ed4
+--- /dev/null
++++ b/doc/man/CMakeLists.txt
+@@ -0,0 +1 @@
++install(FILES qbs.1 DESTINATION ${QBS_RESOURCES_INSTALL_DIR}/man/man1)
+-- 
+2.34.1
+

@@ -1,0 +1,5 @@
+usr/bin/qbs_benchmarker
+usr/bin/qbs_fuzzy-test
+usr/bin/tst_*
+usr/libexec/qbs/dmgbuild
+usr/share/qbs/python

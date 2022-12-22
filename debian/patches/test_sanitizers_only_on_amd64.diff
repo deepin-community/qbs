@@ -1,0 +1,18 @@
+Description: test sanitizers only on amd64
+ In Debian, sanitizers are available not on all architectures.
+ For example, libtsan0 is available only on (amd64, arm64, ppc64, ppc64el).
+Author: Dmitry Shachnev <mitya57@debian.org>
+Forwarded: not-needed
+Last-Update: 2020-05-21
+
+--- a/tests/auto/blackbox/testdata/sanitizer/sanitizer.qbs
++++ b/tests/auto/blackbox/testdata/sanitizer/sanitizer.qbs
+@@ -19,7 +19,7 @@ CppApplication {
+             // thread sanitizer is not supported
+             return sanitizer !== "thread";
+         }
+-        return true;
++        return qbs.architecture === "x86_64";
+     }
+ 
+     condition: {

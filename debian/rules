@@ -1,0 +1,54 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+include /usr/share/dpkg/default.mk
+
+BUILDPATH ?= obj-$(DEB_HOST_GNU_TYPE)
+
+export QT_SELECT := qt5
+
+%:
+	dh $@ --with pkgkde_symbolshelper --buildsystem=cmake
+
+override_dh_auto_clean:
+	dh_auto_clean
+	find . -type f -name .gitignore -delete -print
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-DQBS_ENABLE_RPATH=no \
+		-DWITH_TESTS=yes \
+		-DWITH_UNIT_TESTS=yes \
+		-DQBS_INSTALL_PREFIX=/usr \
+		-DQBS_LIB_INSTALL_DIR=lib/${DEB_HOST_MULTIARCH} \
+		-DQBS_PLUGINS_INSTALL_BASE=lib/${DEB_HOST_MULTIARCH} \
+		-DQBS_INSTALL_HTML_DOCS=yes \
+		-DQBS_INSTALL_QCH_DOCS=yes
+
+override_dh_auto_build-indep:
+	dh_auto_build --no-parallel -- -C doc
+	dh_auto_build -- -C share
+
+override_dh_auto_install-indep:
+	dh_auto_install --no-parallel -- -C doc
+	dh_auto_install -- -C share
+
+override_dh_auto_test-arch:
+ifeq ($(filter nocheck,$(DEB_BUILD_OPTIONS)),)
+	set -ex; \
+		export LD_LIBRARY_PATH=$(BUILDPATH)/lib/${DEB_HOST_MULTIARCH}:$$LD_LIBRARY_PATH; \
+		export HOME=$(CURDIR)/debian/.debhelper/generated/_source/home; \
+		export QBS_AUTOTEST_PROFILE=qbs_autotests; \
+		export QBS_AUTOTEST_ALWAYS_LOG_STDOUT=1; \
+		export QBS_AUTOTEST_ALWAYS_LOG_STDERR=1; \
+		$(BUILDPATH)/bin/qbs-setup-toolchains /usr/bin/gcc gcc; \
+		$(BUILDPATH)/bin/qbs-setup-qt /usr/bin/qmake qbs_autotests; \
+		[ -n "`$(BUILDPATH)/bin/qbs-config --list profiles.qbs_autotests.baseProfile`" ] || \
+			$(BUILDPATH)/bin/qbs-config profiles.qbs_autotests.baseProfile gcc; \
+		LC_ALL=C.UTF-8 dh_auto_test --max-parallel=1
+endif
+
+override_dh_auto_test-indep:
+override_dh_auto_test:

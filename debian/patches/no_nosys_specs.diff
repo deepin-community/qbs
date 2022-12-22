@@ -1,0 +1,76 @@
+Description: do not use -specs=nosys.specs on Debian ARM architectures
+ This requires gcc-arm-none-eabi which we do not want to depend on.
+Author: Dmitry Shachnev <mitya57@debian.org>
+Forwarded: not-needed
+Last-Update: 2021-01-05
+
+--- a/examples/baremetal/pca10001/greenblink/greenblink.qbs
++++ b/examples/baremetal/pca10001/greenblink/greenblink.qbs
+@@ -52,10 +52,7 @@ CppApplication {
+     condition: {
+         if (!qbs.architecture.startsWith("arm"))
+             return false;
+-        return (qbs.toolchain.contains("gcc")
+-                || qbs.toolchain.contains("iar")
+-                || qbs.toolchain.contains("keil"))
+-                && !qbs.toolchain.contains("xcode")
++        return false;
+     }
+     name: "pca10001-greenblink"
+     cpp.cLanguageVersion: "c99"
+--- a/examples/baremetal/pca10040/greenblink/greenblink.qbs
++++ b/examples/baremetal/pca10040/greenblink/greenblink.qbs
+@@ -52,10 +52,7 @@ CppApplication {
+     condition: {
+         if (!qbs.architecture.startsWith("arm"))
+             return false;
+-        return (qbs.toolchain.contains("gcc")
+-                || qbs.toolchain.contains("iar")
+-                || qbs.toolchain.contains("keil"))
+-                && !qbs.toolchain.contains("xcode")
++        return false;
+     }
+     name: "pca10040-greenblink"
+     cpp.cLanguageVersion: "c99"
+--- a/examples/baremetal/stm32f103/greenblink/greenblink.qbs
++++ b/examples/baremetal/stm32f103/greenblink/greenblink.qbs
+@@ -52,10 +52,7 @@ CppApplication {
+     condition: {
+         if (!qbs.architecture.startsWith("arm"))
+             return false;
+-        return (qbs.toolchain.contains("gcc")
+-                || qbs.toolchain.contains("iar")
+-                || qbs.toolchain.contains("keil"))
+-                && !qbs.toolchain.contains("xcode")
++        return false;
+     }
+     name: "stm32f103-greenblink"
+     cpp.cLanguageVersion: "c99"
+--- a/examples/baremetal/stm32f4discovery/blueblink/blueblink.qbs
++++ b/examples/baremetal/stm32f4discovery/blueblink/blueblink.qbs
+@@ -52,10 +52,7 @@ CppApplication {
+     condition: {
+         if (!qbs.architecture.startsWith("arm"))
+             return false;
+-        return (qbs.toolchain.contains("gcc")
+-                || qbs.toolchain.contains("iar")
+-                || qbs.toolchain.contains("keil"))
+-                && !qbs.toolchain.contains("xcode")
++        return false;
+     }
+     name: "stm32f4discovery-blueblink"
+     cpp.cLanguageVersion: "c99"
+--- a/tests/auto/blackbox/testdata-baremetal/BareMetalProduct.qbs
++++ b/tests/auto/blackbox/testdata-baremetal/BareMetalProduct.qbs
+@@ -132,11 +132,6 @@ Product {
+     }
+     Properties {
+         condition: qbs.toolchain.contains("gcc")
+-            && qbs.architecture.startsWith("arm")
+-        cpp.driverFlags: ["-specs=nosys.specs"]
+-    }
+-    Properties {
+-        condition: qbs.toolchain.contains("gcc")
+             && qbs.architecture === "xtensa"
+         cpp.driverFlags: ["-nostdlib"]
+     }
