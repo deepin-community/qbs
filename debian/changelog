@@ -1,8 +1,9 @@
-qbs (1.22.1-2+u001) UNRELEASED; urgency=medium
+qbs (1.22.1-2deepin1) unstable; urgency=medium
 
+  [ Deepin Packages Builder ]
   * update
 
- -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue, 17 May 2022 09:41:52 +0800
+ -- Deepin Packages Builder <packages@deepin.org>  Mon, 09 Jan 2023 10:35:40 +0800
 
 qbs (1.22.1-2) unstable; urgency=medium
 
