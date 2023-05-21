@@ -1,0 +1,19 @@
+Description: link with -latomic when using address sanitizer
+Author: Dmitry Shachnev <mitya57@debian.org>
+Bug: https://bugs.debian.org/1016041
+Forwarded: not-needed
+Last-Update: 2022-08-15
+
+--- a/share/qbs/modules/Sanitizers/address/asan.qbs
++++ b/share/qbs/modules/Sanitizers/address/asan.qbs
+@@ -72,4 +72,10 @@ Module {
+         }
+         return flags;
+     }
++
++    cpp.dynamicLibraries: {
++        if (_enabled)
++            return ["atomic"];
++        return [];
++    }
+ }

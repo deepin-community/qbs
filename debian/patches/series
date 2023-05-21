@@ -4,4 +4,4 @@ test_sanitizers_only_on_amd64.diff
 no_nosys_specs.diff
 disable_bad_assembly.diff
 doc_Install_man_pages_with_cmake.diff
-cmake_regex_syntax.diff
+asan_atomic.diff

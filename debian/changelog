@@ -1,9 +1,24 @@
-qbs (1.22.1-2deepin1) unstable; urgency=medium
+qbs (1.23.1-1) unstable; urgency=medium
 
-  [ Deepin Packages Builder ]
-  * update
+  * New upstream release.
+  * Add a patch to link with atomic library when using address sanitizer,
+    to fix test failure on armel (see #1016041).
+  * Update debian/libqbscore1.23.symbols from buildds’ logs.
+  * Upload to unstable.
 
- -- Deepin Packages Builder <packages@deepin.org>  Mon, 09 Jan 2023 10:35:40 +0800
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 15 Aug 2022 14:41:45 +0300
+
+qbs (1.23.0-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Drop cmake_regex_syntax.diff, applied upstream.
+  * Refresh test_sanitizers_only_on_amd64.diff.
+  * Rename libqbscore1.22 to libqbscore1.23 for upstream SONAME change.
+  * Install one new file (asan.qbs).
+  * Update debian/libqbscore1.23.symbols for GCC 12 (closes: #1013020).
+  * Do not build documentation in build-arch target (closes: #1011159).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sun, 24 Jul 2022 23:38:44 +0300
 
 qbs (1.22.1-2) unstable; urgency=medium
 

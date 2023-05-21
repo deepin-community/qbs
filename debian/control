@@ -48,7 +48,7 @@ Description: Qbs static files
  .
  This package contains Qbs shared static files.
 
-Package: libqbscore1.22
+Package: libqbscore1.23
 Architecture: any
 Multi-Arch: same
 Section: libs
@@ -65,7 +65,7 @@ Package: qbs-dev
 Architecture: any
 Multi-Arch: same
 Section: libdevel
-Depends: libqbscore1.22 (= ${binary:Version}), ${misc:Depends}
+Depends: libqbscore1.23 (= ${binary:Version}), ${misc:Depends}
 Description: Qbs development files
  Qbs is a general purpose cross-platform build tool that aims at fast and
  correct incremental builds. It features a project description language that

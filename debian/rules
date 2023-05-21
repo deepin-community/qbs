@@ -27,6 +27,17 @@ override_dh_auto_configure:
 		-DQBS_INSTALL_HTML_DOCS=yes \
 		-DQBS_INSTALL_QCH_DOCS=yes
 
+override_dh_auto_build-arch:
+	dh_auto_build -- -C src
+ifeq ($(filter nocheck,$(DEB_BUILD_OPTIONS)),)
+	dh_auto_build -- -C share
+	dh_auto_build -- -C tests
+endif
+
+override_dh_auto_install-arch:
+	dh_auto_install -- -C src
+	dh_auto_install -- -C doc/man
+
 override_dh_auto_build-indep:
 	dh_auto_build --no-parallel -- -C doc
 	dh_auto_build -- -C share
@@ -51,4 +62,3 @@ ifeq ($(filter nocheck,$(DEB_BUILD_OPTIONS)),)
 endif
 
 override_dh_auto_test-indep:
-override_dh_auto_test:
