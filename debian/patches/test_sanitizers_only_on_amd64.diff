@@ -7,7 +7,7 @@ Last-Update: 2020-05-21
 
 --- a/tests/auto/blackbox/testdata/sanitizer/sanitizer.qbs
 +++ b/tests/auto/blackbox/testdata/sanitizer/sanitizer.qbs
-@@ -19,7 +19,7 @@ CppApplication {
+@@ -23,7 +23,7 @@ CppApplication {
              // thread sanitizer is not supported
              return sanitizer !== "thread";
          }

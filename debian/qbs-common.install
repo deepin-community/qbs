@@ -94,6 +94,7 @@ usr/share/qbs/modules/Exporter/pkgconfig/pkgconfig.js
 usr/share/qbs/modules/Exporter/pkgconfig/pkgconfig.qbs
 usr/share/qbs/modules/Exporter/qbs/qbsexporter.js
 usr/share/qbs/modules/Exporter/qbs/qbsexporter.qbs
+usr/share/qbs/modules/Sanitizers/address/asan.qbs
 usr/share/qbs/modules/archiver/archiver.qbs
 usr/share/qbs/modules/autotest/autotest.qbs
 usr/share/qbs/modules/bundle/BundleModule.qbs
